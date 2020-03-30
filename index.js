@@ -74,6 +74,14 @@ async function main(){
 
 main();
 
+
+const allClients = require('./routes/customerRoutes');
+const newInvoice = require('./routes/invoiceRoutes');
+
+app.use('/clientes', allClients);
+app.use('/newInvoice', newInvoice);
+
+
 /*
 const express = require('express');
 const app = express();

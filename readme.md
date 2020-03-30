@@ -1,2 +1,0 @@
--Anadir a proyecto de node
--anadir archivo .env con credenciales
