@@ -77,10 +77,11 @@ main();
 
 const allClients = require('./routes/customerRoutes');
 const newInvoice = require('./routes/invoiceRoutes');
+const allProducts = require('./routes/productRoutes');
 
 app.use('/clientes', allClients);
 app.use('/invoices', newInvoice);
-
+app.use('/products', allProducts);
 
 /*
 const express = require('express');

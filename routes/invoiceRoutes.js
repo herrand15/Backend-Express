@@ -18,6 +18,4 @@ router.post("/newInvoice", async (req, res) => {
 
 
 
-
-
 module.exports = router;
