@@ -58,8 +58,8 @@ const Client= require('./models/cliente');
 
 
 async function main(){
-  await mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true } );
-  console.log("db connected");
+  //await mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true } );
+  //console.log("db connected");
   //let pro = new Product({name: 'ok', price: 788});
   //await pro.save();
    
@@ -79,7 +79,7 @@ const allClients = require('./routes/customerRoutes');
 const newInvoice = require('./routes/invoiceRoutes');
 
 app.use('/clientes', allClients);
-app.use('/newInvoice', newInvoice);
+app.use('/invoices', newInvoice);
 
 
 /*
