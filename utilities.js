@@ -1,7 +1,7 @@
 const realmnId = "4620816365041757700";
 const fetch = require("node-fetch");
 const access =
-    "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..ARgdqCqjIbS_rbYOFa4M1g.qDxJ9VA1egR-BYw4FEtCjMNi13BxW0FoigXgpjVrLvMAPL2bXknWzRAJ0UCjiXfRdfX1X5hvZICThJPqEdXvR1-Qhc9S8FTrIFXHjwoikl-_qkAcjghZHT6kDS5nTtN-H6IJFbbJZ_oiA-YfGshWCddJjJTYp8FkkpLg31H1CS2Sv1DlkV1V0McS9k8wCiTxJjTaeyCpQviYwFHJnu1GY1J2DCE3TF977_MPYD1-ucuf4Nr2dv459ADh7g8kn7x0Z7MQ0PWae_YL0qWmUvAtAGxlmuE2h8UtmzjIBfavIIIyKLk7ajhnZc6raVdXF8mBQy0Ax-a9ePA2A_lMLjWyh4CPwlSspKjQUMUFly_daXBFQj0QivFgdWUEWw8St3KECCdp1bzCLEU9ZgxQm-pRrda-4tciVZLXppMyOypLWeqAFCRd4ykWb4MVxpEmZdlQhi2XcOJYgbEm3Q4ZBF3FVEo3ysiFRD7i-XfMDOKAmafB4-vcPFSVdGW3qlDXrzLuxBekmbxQJzubbpXGUHgiIBJBnL2NCjC_RPPd8pIXofP_GrMhEvA6dVzOF-ce5OruKaVQ-WkomXQ_--jReL3kbZkxh5dabU0sGyWVl7N-hhRrrkqvlpdGW8r3UR5BGmxByuLxIlJ8nHO-5Hw7qzpT45D2V8aQd3wDrB2KoU0OfI2ZrBbSERY1W92qyNwGx9du1R83BVfruwyAWe2WZFMcU4rZAs3OD9sGIqLX3U4IQmQ.eloX9nFfTGyF_Ogq2eJX6g";
+    "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..2oyiANJqPyfo3bfPFhVW-A.0ccU6fDjMwrNkWpnVntJKguafyM-4YvVav1PxMDg4vMyDA15KhcwT7ujIOu_SLIscGk99y92caMuVpYl_lScNmWyL9XHT8DWxObWHT8MerwfK1GR8MgYHFAeDiN2uuW9WDCZ28ArDB2VW-lGWwuNmqsI7AlocNUFnlEITq5Tgx9VySYNeOFqeLTVLaqzmcTnM0M4B-F3NjaNZuCgiKrBeAUkG12Nb_REomGR-iMXrtJTLz7Ggaul48GnO4yr0Ds5UBQ79A4mifAL-FMkDWr4V7LfdUaOYDOQhMjxGpWe44hbwWXboyjyh3rpR7Qh7rw2d9ZN1kN-wKnYmlfxF5MpGWpsGZPeoUJUwZ3kmzG7EWkvk-DjkQ8b0npW1DI2aysxet7TIKpjZaZCccktbjup8WXZVImXnw4TyhiGOLt_wkDfR-Gkw5_x1XEFxw2NVOxml0m1XGaonlsl_N9JsGm6TwqeQDgl2oqZQe9lRup2E5NGJ_H3d8yWRgqxzO9L9k8K0q1arKqeHr8_BIErnM7vp_yF3an0qqQvSqJIy9icNxm6ylt6D34jXMu4pk9aKsrtLfbnDIBP6V-B2vaPCOLg9OjxBADaaEUAcJ0-EP1hLiRaCR62Pdc1Fo6NL9AxNm-A4yc-SDTJzAB8Twiz6wBhi_FyMLskCmy4P1MmAMLYOkghGYmDKDwXARaqpAppAJCzRYN6RA_C2MVZlcwkvMOZkYIAbVfRDKlVvvs2ZJWwwac.cwZGZAjWAKNtGsy-u7ShUw";
 
 async function getReq(query) {
     const fetchFun = await fetch(
@@ -10,8 +10,8 @@ async function getReq(query) {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `bearer ${access}`,
-                Accept: "application/json"
-            }
+                Accept: "application/json",
+            },
         }
     );
     const json = await fetchFun.json();
@@ -19,35 +19,21 @@ async function getReq(query) {
     return json;
 }
 
-async function postReq() {
+async function postReq(object) {
     const fetchFun = await fetch(
         `https://sandbox-quickbooks.api.intuit.com/v3/company/${realmnId}/invoice?minorversion=47`,
         {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `bearer ${access}`,
-                Accept: "application/json"
+                Accept: "application/json",
             },
             method: "POST",
-            body: JSON.stringify({
-                Line: [
-                    {
-                        DetailType: "SalesItemLineDetail",
-                        Amount: 12.0,
-                        SalesItemLineDetail: {
-                            ItemRef: {
-                                name: "Services",
-                                value: "2"
-                            }
-                        }
-                    }
-                ],
-                CustomerRef: {
-                    value: "1"
-                }
-            })
+            body: JSON.stringify(object),
         }
     );
+    console.log("ayuda");
+    console.log(object);
     const json = await fetchFun.json();
     return json;
 }
