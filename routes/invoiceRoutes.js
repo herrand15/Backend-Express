@@ -36,6 +36,7 @@ router.post("/newInvoice", async (req, res) => {
                     value: req.body.orderItems[i].Id,
                 },
                 Qty: req.body.itemQty[req.body.orderItems[i].Id],
+                UnitPrice: req.body.orderItems[i].UnitPrice,
             },
         };
         L.push(product);
